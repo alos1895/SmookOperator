@@ -1,0 +1,39 @@
+﻿<h5>Oh yeah</h5>
+    
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <input type="text" name="name" value=""id="idDevice" />
+            <button type="button" onclick="checkDetailDevice()">Buscar</button>
+        </div>        
+    </div>
+</div>
+
+    
+@section Scripts{
+<script>
+    function checkDetailDevice() {
+        let IdDevice = $('#idDevice').val().toString().trim();
+        $.ajax({
+            type: 'GET',
+            url: '/detailLastMeasure/' + IdDevice,
+            contentType: 'application/x-www-form-urlencoded',
+            beforeSend: function () {
+            },
+            success: function (data) {
+                alert(data.device + ' ppm:' + data.ppm);
+            },
+            error: function () {
+
+            },
+        });
+    }
+
+</script>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>    
+} 
